@@ -1,8 +1,8 @@
 {
   "version": "0.0.1",
-  "title": "_lhpbp Plugin",
-  "name": "_lhpbp-plugin",
-  "slug": "_lhpbp-plugin",
+  "title": "stalin Plugin",
+  "name": "stalin-plugin",
+  "slug": "stalin-plugin",
   "author": "Luehrsen // Heinrich",
   "authorUrl": "https://www.luehrsen-heinrich.de",
   "description": "This is the wp-plugin-boilerplate Plugin for WordPress by Luehrsen // Heinrich.",
@@ -50,12 +50,17 @@
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "prompt": "^1.0.0",
+    "replace-in-file": "^4.1.3"
+  },
   "scripts": {
     "setup": "sh bin/setup-local-env.sh",
     "dev": "sh bin/setup-local-env.sh && grunt watch",
     "remove": "docker-compose down --volumes --remove-orphans",
-    "release": "env-cmd .env release-it"
+    "release": "env-cmd .env release-it",
+    "rename": "node bin/rename-slug.js"
   },
   "browserslist": [
     "> 1%",
