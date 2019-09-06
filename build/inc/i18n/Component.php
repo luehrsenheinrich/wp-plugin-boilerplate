@@ -1,6 +1,6 @@
 <?php
 /**
- * _lhpbp\i18n\Component class
+ * _Lhpbp\i18n\Component class
  *
  * @package _lhpbp
  */

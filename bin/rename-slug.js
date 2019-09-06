@@ -1,11 +1,10 @@
 // Include prompt module.
 const prompt = require( 'prompt' );
-const isEmpty = require( 'lodash/isEmpty' );
 const forEach = require( 'lodash/forEach' );
 const replace = require( 'replace-in-file' );
 
 // This json object is used to configure what data will be retrieved from command line.
-var prompt_attributes = [
+const promptAttributes = [
 	{
 		name: 'oldSlug',
 		type: 'string',
@@ -23,61 +22,72 @@ var prompt_attributes = [
 prompt.start();
 
 // Prompt and get user input then display those data in console.
-prompt.get( prompt_attributes, function ( err, result ) {
+prompt.get( promptAttributes, function( err, result ) {
 	if ( err ) {
-		console.log( err );
+		console.error( err ); // eslint-disable-line no-console
 		return 1;
-	} else {
-		// Get user input from result object.
-		const oldSlug = result.oldSlug;
-		const newSlug = result.newSlug;
-		const fallbackSlug = oldSlug.startsWith( '_' ) ? `bb${ oldSlug.substring( 1 ) }` : false;
-
-		let from = [ new RegExp( oldSlug, 'g' ) ];
-		let fromCaps = [ new RegExp( oldSlug.toUpperCase(), 'g' ) ];
-
-		if ( fallbackSlug ) {
-			from.push( new RegExp( fallbackSlug, 'g' ) );
-		}
-
-		let replaceMap = {};
-		replaceMap[ oldSlug ] = newSlug;
-
-		if ( fallbackSlug ) {
-			replaceMap[ fallbackSlug ] = newSlug;
-		}
-
-		const dir = __dirname;
-		const dirBase = dir.substring( 0, dir.length - 4 );
-
-		const options = {
-			files: dirBase + '/**/*.*',
-			from: from,
-			to: newSlug,
-			ignore: [ '**/node_modules/**' ]
-		};
-
-		const optionsCaps = {
-			files: dirBase + '/**/*.*',
-			from: fromCaps,
-			to: newSlug.toUpperCase(),
-			ignore: [ '**/node_modules/**' ]
-		};
-
-		const results = replace.sync( options );
-		const resultsCaps = replace.sync( optionsCaps );
-
-		forEach( resultsCaps, (result) => {
-			if ( result.hasChanged ) {
-				console.log( 'changed: ', result.file.replace( dirBase, '' ) );
-			}
-		});
-
-		forEach( results, (result) => {
-			if ( result.hasChanged ) {
-				console.log( 'changed: ', result.file.replace( dirBase, '' ) );
-			}
-		});
-
 	}
-});
+
+	// Get user input from result object.
+	const oldSlug = result.oldSlug;
+	const newSlug = result.newSlug;
+	const fallbackSlug = oldSlug.startsWith( '_' ) ? `bb${ oldSlug.substring( 1 ) }` : false;
+	const newSlugDropCap = newSlug.startsWith( '_' ) ? newSlug.charAt( 1 ).toUpperCase() + fallbackSlug.substring( 2 ) : oldSlug.charAt( 0 ).toUpperCase() + fallbackSlug.substring( 1 );
+
+	const from = [ new RegExp( oldSlug, 'g' ) ];
+	const fromCaps = [ new RegExp( oldSlug.toUpperCase(), 'g' ) ];
+	const fromDropCap = fallbackSlug ? fallbackSlug.charAt( 2 ).toUpperCase() + fallbackSlug.substring( 3 ) : oldSlug.charAt( 0 ).toUpperCase() + fallbackSlug.substring( 1 );
+
+	if ( fallbackSlug ) {
+		from.push( new RegExp( fallbackSlug, 'g' ) );
+	}
+
+	const replaceMap = {};
+	replaceMap[ oldSlug ] = newSlug;
+
+	if ( fallbackSlug ) {
+		replaceMap[ fallbackSlug ] = newSlug;
+	}
+
+	const dir = __dirname;
+	const dirBase = dir.substring( 0, dir.length - 4 );
+
+	const options = {
+		files: dirBase + '/**/*.*',
+		from,
+		to: newSlug,
+		ignore: [ '**/node_modules/**' ],
+	};
+	const optionsCaps = {
+		files: dirBase + '/**/*.*',
+		from: fromCaps,
+		to: newSlug.toUpperCase(),
+		ignore: [ '**/node_modules/**' ],
+	};
+	const optionsDropCap = {
+		files: dirBase + '/**/*.*',
+		from: fromDropCap,
+		to: newSlugDropCap,
+		ignore: [ '**/node_modules/**' ],
+	};
+
+	const results = replace.sync( options );
+	const resultsCaps = replace.sync( optionsCaps );
+	const resultsDropCap = replace.sync( optionsDropCap );
+
+	forEach( results, ( res ) => {
+		if ( res.hasChanged ) {
+			console.log( 'changed: ', res.file.replace( dirBase, '' ) ); // eslint-disable-line no-console
+		}
+	} );
+	forEach( resultsCaps, ( res ) => {
+		if ( res.hasChanged ) {
+			console.log( 'changed: ', res.file.replace( dirBase, '' ) ); // eslint-disable-line no-console
+		}
+	} );
+	forEach( resultsDropCap, ( res ) => {
+		if ( res.hasChanged ) {
+			console.log( 'changed: ', res.file.replace( dirBase, '' ) ); // eslint-disable-line no-console
+		}
+	} );
+} );
