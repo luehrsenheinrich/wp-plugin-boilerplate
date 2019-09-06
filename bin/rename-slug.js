@@ -32,11 +32,11 @@ prompt.get( promptAttributes, function( err, result ) {
 	const oldSlug = result.oldSlug;
 	const newSlug = result.newSlug;
 	const fallbackSlug = oldSlug.startsWith( '_' ) ? `bb${ oldSlug.substring( 1 ) }` : false;
-	const newSlugDropCap = newSlug.startsWith( '_' ) ? newSlug.charAt( 1 ).toUpperCase() + fallbackSlug.substring( 2 ) : oldSlug.charAt( 0 ).toUpperCase() + fallbackSlug.substring( 1 );
+	const newSlugDropCap = newSlug.startsWith( '_' ) ? newSlug.charAt( 1 ).toUpperCase() + newSlug.substring( 2 ) : newSlug.charAt( 0 ).toUpperCase() + newSlug.substring( 1 );
 
 	const from = [ new RegExp( oldSlug, 'g' ) ];
 	const fromCaps = [ new RegExp( oldSlug.toUpperCase(), 'g' ) ];
-	const fromDropCap = fallbackSlug ? fallbackSlug.charAt( 2 ).toUpperCase() + fallbackSlug.substring( 3 ) : oldSlug.charAt( 0 ).toUpperCase() + fallbackSlug.substring( 1 );
+	const fromDropCap = oldSlug.startsWith( '_' ) ? '_' + oldSlug.charAt( 1 ).toUpperCase() + oldSlug.substring( 2 ) : oldSlug.charAt( 0 ).toUpperCase() + oldSlug.substring( 1 );
 
 	if ( fallbackSlug ) {
 		from.push( new RegExp( fallbackSlug, 'g' ) );
