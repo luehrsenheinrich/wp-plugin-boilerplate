@@ -1,6 +1,6 @@
 <?php
 /**
- * _lhpbp\Plugin class
+ * _Lhpbp\Plugin class
  *
  * @package _lhpbp
  */
