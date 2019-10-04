@@ -8,11 +8,11 @@
 namespace _lhpbp;
 
 /**
- * Provides access to all available template tags of the plugin.
+ * Provides access to all available functions of the plugin.
  *
  * When called for the first time, the function will initialize the plugin.
  *
- * @return Template_Tags Template tags instance exposing template tag methods.
+ * @return Plugin_Functions Plugin functions instance exposing plugin function methods.
  */
 function wp__lhpbp() {
 	static $plugin = null;
@@ -22,5 +22,5 @@ function wp__lhpbp() {
 		$plugin->initialize();
 	}
 
-	return $plugin->template_tags();
+	return $plugin->plugin_functions();
 }

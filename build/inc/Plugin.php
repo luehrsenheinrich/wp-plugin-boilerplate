@@ -24,9 +24,9 @@ class Plugin {
 	/**
 	 * The template tags instance, providing access to all available template tags.
 	 *
-	 * @var Template_Tags
+	 * @var Plugin_Functions
 	 */
-	protected $template_tags;
+	protected $plugin_functions;
 
 	/**
 	 * Constructor.
@@ -60,11 +60,11 @@ class Plugin {
 			$this->components[ $component->get_slug() ] = $component;
 		}
 		// Instantiate the template tags instance for all plugin templating components.
-		$this->template_tags = new Template_Tags(
+		$this->plugin_functions = new Plugin_Functions(
 			array_filter(
 				$this->components,
 				function( Component_Interface $component ) {
-					return $component instanceof Templating_Component_Interface;
+					return $component instanceof Plugin_Component_Interface;
 				}
 			)
 		);
@@ -91,10 +91,10 @@ class Plugin {
 	 * for actual template tag methods to be called. For example, if there is a template tag called `posted_on`, it can
 	 * be accessed via `wp__lhpbp()->posted_on()`.
 	 *
-	 * @return Template_Tags Template tags instance.
+	 * @return Plugin_Functions Template tags instance.
 	 */
-	public function template_tags() {
-		return $this->template_tags;
+	public function plugin_functions() {
+		return $this->plugin_functions;
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?php
 /**
- * _Lhpbp\Template_Tags class
+ * _Lhpbp\Plugin_Functions class
  *
  * @package _lhpbp
  */
@@ -11,14 +11,14 @@ use BadMethodCallException;
 use RuntimeException;
 
 /**
- * Template tags entry point.
+ * Plugin functions entry point.
  *
- * This class provides access to all available template tag methods.
+ * This class provides access to all available plugin functions methods.
  *
- * Its instance can be accessed through `wp__lhpbp()`. For example, if there is a template tag called `posted_on`, it can
+ * Its instance can be accessed through `wp__lhpbp()`. For example, if there is a plugin function called `posted_on`, it can
  * be accessed via `wp__lhpbp()->posted_on()`.
  */
-class Template_Tags {
+class Plugin_Functions {
 	/**
 	 * Associative array of all available template tags.
 	 *
@@ -26,34 +26,34 @@ class Template_Tags {
 	 *
 	 * @var array
 	 */
-	protected $template_tags = array();
+	protected $plugin_functions = array();
 
 	/**
 	 * Constructor.
 	 *
 	 * Sets the plugin components.
 	 *
-	 * @param array $components Optional. List of plugin templating components. Each of these must implement the
-	 *                          Templating_Component_Interface interface.
+	 * @param array $components Optional. List of plugin function components. Each of these must implement the
+	 *                          Plugin_Component_Interface interface.
 	 *
 	 * @throws InvalidArgumentException Thrown if one of the $components does not implement
-	 *                                  Templating_Component_Interface.
+	 *                                  Plugin_Component_Interface.
 	 */
 	public function __construct( array $components = [] ) {
 		// Set the template tags for the components.
 		foreach ( $components as $component ) {
 			// Bail if a templating component is invalid.
-			if ( ! $component instanceof Templating_Component_Interface ) {
+			if ( ! $component instanceof Plugin_Component_Interface ) {
 				throw new InvalidArgumentException(
 					sprintf(
 						/* translators: 1: classname/type of the variable, 2: interface name */
-						__( 'The plugin templating component %1$s does not implement the %2$s interface.', '_lhpbp' ),
+						__( 'The plugin functions component %1$s does not implement the %2$s interface.', '_lhpbp' ),
 						gettype( $component ),
-						Templating_Component_Interface::class
+						Plugin_Component_Interface::class
 					)
 				);
 			}
-			$this->set_template_tags( $component );
+			$this->set_plugin_functions( $component );
 		}
 	}
 
@@ -69,28 +69,28 @@ class Template_Tags {
 	 * @throws BadMethodCallException Thrown if the template tag does not exist.
 	 */
 	public function __call( $method, $args ) {
-		if ( ! isset( $this->template_tags[ $method ] ) ) {
+		if ( ! isset( $this->plugin_functions[ $method ] ) ) {
 			throw new BadMethodCallException(
 				sprintf(
 					/* translators: %s: template tag name */
-					__( 'The template tag %s does not exist.', '_lhpbp' ),
+					__( 'The plugin function %s does not exist.', '_lhpbp' ),
 					'wp__lhpbp()->' . $method . '()'
 				)
 			);
 		}
-		return call_user_func_array( $this->template_tags[ $method ]['callback'], $args );
+		return call_user_func_array( $this->plugin_functions[ $method ]['callback'], $args );
 	}
 
 	/**
 	 * Sets template tags for a given plugin templating component.
 	 *
-	 * @param Templating_Component_Interface $component plugin templating component.
+	 * @param Plugin_Component_Interface $component plugin templating component.
 	 *
 	 * @throws InvalidArgumentException Thrown when one of the template tags is invalid.
 	 * @throws RuntimeException         Thrown when one of the template tags conflicts with an existing one.
 	 */
-	protected function set_template_tags( Templating_Component_Interface $component ) {
-		$tags = $component->template_tags();
+	protected function set_plugin_functions( Plugin_Component_Interface $component ) {
+		$tags = $component->plugin_functions();
 		foreach ( $tags as $method_name => $callback ) {
 			if ( is_callable( $callback ) ) {
 				$callback = [ 'callback' => $callback ];
@@ -99,23 +99,23 @@ class Template_Tags {
 				throw new InvalidArgumentException(
 					sprintf(
 						/* translators: 1: template tag method name, 2: component class name */
-						__( 'The template tag method %1$s registered by plugin component %2$s must either be a callable or an array.', '_lhpbp' ),
+						__( 'The plugin function method %1$s registered by plugin component %2$s must either be a callable or an array.', '_lhpbp' ),
 						$method_name,
 						get_class( $component )
 					)
 				);
 			}
-			if ( isset( $this->template_tags[ $method_name ] ) ) {
+			if ( isset( $this->plugin_functions[ $method_name ] ) ) {
 				throw new RuntimeException(
 					sprintf(
 						/* translators: 1: template tag method name, 2: component class name */
-						__( 'The template tag method %1$s registered by plugin component %2$s conflicts with an already registered template tag of the same name.', '_lhpbp' ),
+						__( 'The plugin function method %1$s registered by plugin component %2$s conflicts with an already registered plugin function of the same name.', '_lhpbp' ),
 						$method_name,
 						get_class( $component )
 					)
 				);
 			}
-			$this->template_tags[ $method_name ] = $callback;
+			$this->plugin_functions[ $method_name ] = $callback;
 		}
 	}
 }
