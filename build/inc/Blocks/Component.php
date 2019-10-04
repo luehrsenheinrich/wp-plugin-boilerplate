@@ -30,7 +30,7 @@ class Component implements Component_Interface {
 	 */
 	public function __construct() {
 		$this->block_list = array(
-			'bblhpbp/hello-there' => array(),
+			'jslhpbp/hello-there' => array(),
 		);
 	}
 
