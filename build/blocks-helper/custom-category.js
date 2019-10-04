@@ -15,9 +15,9 @@ import icons from './icons';
 setCategories( [
 	// Add a _lhpbp block category
 	{
-		slug: 'bblhpbp',
-		title: 'bblhpbp',
+		slug: 'jslhpbp',
+		title: 'jslhpbp',
 		icon: icons._lhpbp,
 	},
-	...getCategories().filter( ( { slug } ) => slug !== 'bblhpbp' ),
+	...getCategories().filter( ( { slug } ) => slug !== 'jslhpbp' ),
 ] );
