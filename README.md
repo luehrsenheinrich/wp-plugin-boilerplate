@@ -32,10 +32,10 @@ new repository. So let's get started:
 
 ### Plugin Slug & Names
 
-- [ ] Rename the `build/_lhpbp-plugin.php` file
+- [ ] Rename the `build/_lhpbp.php` file
 - [ ] Search & Replace (case sensitive) `_lhpbp` with your new WordPress plugin slug
-- [ ] Search & Replace (case sensitive) `bblhpbp` with your new WordPress plugin slug
-- [ ] Search & Replace (case sensitive) `_LHPBP` with your new WordPress plugin slug in uppercase
+- [ ] Search & Replace (case sensitive) `jslhpbp` with your new WordPress plugin slug in camelcase
+- [ ] Search & Replace (case sensitive) `` with your new WordPress plugin slug in uppercase
 - [ ] Check success in `package.json`, `docker-compose.json` & `bin/install-wordpress.sh`
 
 ### Running the enviroment
