@@ -1,8 +1,8 @@
 {
   "version": "0.0.1",
-  "title": "_lhpbp Plugin",
-  "name": "_lhpbp-plugin",
-  "slug": "_lhpbp-plugin",
+  "title": "_lhpbp",
+  "name": "_lhpbp",
+  "slug": "_lhpbp",
   "author": "Luehrsen // Heinrich",
   "authorUrl": "https://www.luehrsen-heinrich.de",
   "description": "This is the wp-plugin-boilerplate Plugin for WordPress by Luehrsen // Heinrich.",
