@@ -38,7 +38,7 @@ new repository. So let's get started:
 - [ ] Search & Replace (case sensitive) `_LHPBP` with your new WordPress plugin slug in uppercase
 - [ ] Check success in `package.json`, `docker-compose.json` & `bin/install-wordpress.sh`
 
-### Running the enviroment
+### Running the environment
 
 - [ ] Type `npm run setup` into the terminal to spin up the docker enviroment
 - [ ] Open `http://localhost/wp-admin` and log in with `wordpress:wordpress`
@@ -46,10 +46,12 @@ new repository. So let's get started:
 
 ### Test Release
 
+- [ ] Save the `.env.sample` as `.env` and add your GitHub token
 - [ ] Add a 0.0.2 release by running `npm run release` in your terminal
 - [ ] Check if the release has been created and uploaded in the GitHub release section
 
 ### Finishing touches
 
-- [ ] Edit the `README.md` with the appropriate text about your plugin
-- [ ] 🎉  Celebrate!
+- [ ] Edit the `plugin-README.md` with the appropriate text about your plugin
+- [ ] Remove the `README.md` and rename `plugin-README.md` to be the new `README.md`
+- [ ] 🎉 Celebrate!
