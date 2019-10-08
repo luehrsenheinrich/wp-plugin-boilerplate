@@ -19,20 +19,20 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! defined( '_SLUG' ) ) {
-	define( '_SLUG', '<%= pkg.slug %>' );
+if ( ! defined( '_LHPBP_SLUG' ) ) {
+	define( '_LHPBP_SLUG', '<%= pkg.slug %>' );
 }
 
-if ( ! defined( '_VERSION' ) ) {
-	define( '_VERSION', '<%= pkg.version %>' );
+if ( ! defined( '_LHPBP_VERSION' ) ) {
+	define( '_LHPBP_VERSION', '<%= pkg.version %>' );
 }
 
-if ( ! defined( '_URL' ) ) {
-	define( '_URL', plugin_dir_url( __FILE__ ) );
+if ( ! defined( '_LHPBP_URL' ) ) {
+	define( '_LHPBP_URL', plugin_dir_url( __FILE__ ) );
 }
 
-if ( ! defined( '_PATH' ) ) {
-	define( '_PATH', plugin_dir_path( __FILE__ ) );
+if ( ! defined( '_LHPBP_PATH' ) ) {
+	define( '_LHPBP_PATH', plugin_dir_path( __FILE__ ) );
 }
 
 /**
@@ -55,7 +55,7 @@ function _lhpbp_autoload( $class_name ) {
 	}
 
 	$parts = explode( '\\', substr( $class_name, strlen( $namespace . '\\' ) ) );
-	$path  = _PLUGIN_PATH . 'inc';
+	$path  = _LHPBP_PATH . 'inc';
 
 	foreach ( $parts as $part ) {
 		$path .= '/' . $part;
@@ -75,7 +75,7 @@ function _lhpbp_autoload( $class_name ) {
 spl_autoload_register( '_lhpbp_autoload' );
 
 // Load the `wp__lhpbp()` entry point function.
-require _PLUGIN_PATH . 'inc/functions.php';
+require _LHPBP_PATH . 'inc/functions.php';
 
 // Initialize the plugin.
 call_user_func( '_lhpbp\wp__lhpbp' );
