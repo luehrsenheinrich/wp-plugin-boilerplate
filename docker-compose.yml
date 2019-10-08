@@ -11,14 +11,14 @@ services:
       ABSPATH: /usr/src/wordpress/
     volumes:
       - wordpress:/var/www/html
-      - ./trunk:/var/www/html/wp-content/plugins/_lhpbp-plugin
+      - ./trunk:/var/www/html/wp-content/plugins/_lhpbp
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   cli:
     image: wordpress:cli
     volumes:
       - wordpress:/var/www/html
-      - ./trunk:/var/www/html/wp-content/plugins/_lhpbp-plugin
+      - ./trunk:/var/www/html/wp-content/plugins/_lhpbp
 
   mysql:
     image: mysql:5.7
