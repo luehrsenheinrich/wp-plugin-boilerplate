@@ -63,9 +63,9 @@ class Component implements Component_Interface {
 	public function register_scripts_styles() {
 		wp_register_script(
 			'_lhpbp-blocks-helper',
-			_LHPBP_PLUGIN_URL . 'js/blocks-helper.min.js',
+			_LHPBP_URL . 'js/blocks-helper.min.js',
 			array(),
-			'<##= pkg.version ##>',
+			'<%= pkg.version %>',
 			true
 		);
 
@@ -77,17 +77,17 @@ class Component implements Component_Interface {
 
 		wp_register_script(
 			'_lhpbp-blocks-editor',
-			_LHPBP_PLUGIN_URL . 'js/blocks.min.js',
+			_LHPBP_URL . 'js/blocks.min.js',
 			array( '_lhpbp-blocks-helper', 'wp-block-library' ),
-			'<##= pkg.version ##>',
+			'<%= pkg.version %>',
 			false
 		);
 
 		wp_register_script(
 			'_lhpbp-blocks-frontend',
-			_LHPBP_PLUGIN_URL . 'js/blocks-frontend.min.js',
+			_LHPBP_URL . 'js/blocks-frontend.min.js',
 			array( 'jquery' ),
-			'<##= pkg.version ##>',
+			'<%= pkg.version %>',
 			true
 		);
 
@@ -95,22 +95,22 @@ class Component implements Component_Interface {
 			'_lhpbp-blocks-editor',
 			'_lhpbpPlugin',
 			array(
-				'plugin_url' => _LHPBP_PLUGIN_URL,
+				'plugin_url' => _LHPBP_URL,
 			)
 		);
 
 		wp_register_style(
 			'_lhpbp-blocks-editor-style',
-			_LHPBP_PLUGIN_URL . 'css/blocks-editor.min.css',
+			_LHPBP_URL . 'css/blocks-editor.min.css',
 			array(),
-			'<##= pkg.version ##>'
+			'<%= pkg.version %>'
 		);
 
 		wp_register_style(
 			'_lhpbp-blocks-style',
-			_LHPBP_PLUGIN_URL . 'css/blocks.min.css',
+			_LHPBP_URL . 'css/blocks.min.css',
 			array(),
-			'<##= pkg.version ##>'
+			'<%= pkg.version %>'
 		);
 	}
 
