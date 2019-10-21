@@ -65,7 +65,7 @@ class Component implements Component_Interface {
 			'_lhpbp-blocks-helper',
 			_LHPBP_URL . 'js/blocks-helper.min.js',
 			array(),
-			'<##= pkg.version ##>',
+			'<%= pkg.version %>',
 			true
 		);
 
@@ -79,7 +79,7 @@ class Component implements Component_Interface {
 			'_lhpbp-blocks-editor',
 			_LHPBP_URL . 'js/blocks.min.js',
 			array( '_lhpbp-blocks-helper', 'wp-block-library' ),
-			'<##= pkg.version ##>',
+			'<%= pkg.version %>',
 			false
 		);
 
@@ -87,7 +87,7 @@ class Component implements Component_Interface {
 			'_lhpbp-blocks-frontend',
 			_LHPBP_URL . 'js/blocks-frontend.min.js',
 			array( 'jquery' ),
-			'<##= pkg.version ##>',
+			'<%= pkg.version %>',
 			true
 		);
 
@@ -103,14 +103,14 @@ class Component implements Component_Interface {
 			'_lhpbp-blocks-editor-style',
 			_LHPBP_URL . 'css/blocks-editor.min.css',
 			array(),
-			'<##= pkg.version ##>'
+			'<%= pkg.version %>'
 		);
 
 		wp_register_style(
 			'_lhpbp-blocks-style',
 			_LHPBP_URL . 'css/blocks.min.css',
 			array(),
-			'<##= pkg.version ##>'
+			'<%= pkg.version %>'
 		);
 	}
 
