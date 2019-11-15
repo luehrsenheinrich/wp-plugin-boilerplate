@@ -15,7 +15,7 @@ cache:
     - $HOME/.nvm/.cache
 
 install:
-  - nvm use --lts
+  - nvm install --lts
   - composer install
   - npm install
 
