@@ -35,47 +35,11 @@ if ( ! defined( '_LHPBP_PATH' ) ) {
 	define( '_LHPBP_PATH', plugin_dir_path( __FILE__ ) );
 }
 
-/**
- * Custom autoloader function for plugin classes.
- * Autoloader and architecture below heavily inspired by WP Rig.
- * Thank you guys for your awesome work!
- *
- * Changes were made to fit the boilerplates needs (e.g. change namespaces and function names).
- *
- * @access private
- * @see https://github.com/wprig/wprig
- * @param string $class_name Class name to load.
- * @return bool True if the class was loaded, false otherwise.
- */
-function _lhpbp_autoload( $class_name ) {
-	$namespace = '_lhpbp';
-
-	if ( strpos( $class_name, $namespace . '\\' ) !== 0 ) {
-		return false;
-	}
-
-	$parts = explode( '\\', substr( $class_name, strlen( $namespace . '\\' ) ) );
-	$path  = _LHPBP_PATH . 'inc';
-
-	foreach ( $parts as $part ) {
-		$path .= '/' . $part;
-	}
-
-	$path .= '.php';
-
-	if ( ! file_exists( $path ) ) {
-		return false;
-
-	}
-
-	require_once $path;
-
-	return true;
-}
-spl_autoload_register( '_lhpbp_autoload' );
+// Load the autoloader.
+require _LHPBP_PATH . 'vendor/autoload.php';
 
 // Load the `wp__lhpbp()` entry point function.
 require _LHPBP_PATH . 'inc/functions.php';
 
 // Initialize the plugin.
-call_user_func( '_lhpbp\wp__lhpbp' );
+call_user_func( 'WpMunich\_lhpbp\wp__lhpbp' );
