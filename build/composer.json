@@ -1,0 +1,11 @@
+{
+  "name": "wpmunich/lhbpp",
+  "type": "wordpress-plugin",
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "WpMunich\\_lhpbp\\": "inc/",
+    }
+  }
+}

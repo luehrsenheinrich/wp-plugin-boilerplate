@@ -5,8 +5,8 @@
  * @package _lhpbp
  */
 
-namespace _lhpbp\i18n;
-use _lhpbp\Component_Interface;
+namespace WpMunich\_lhpbp\i18n;
+use WpMunich\_lhpbp\Component_Interface;
 use function add_action;
 use function load_plugin_textdomain;
 

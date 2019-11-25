@@ -5,8 +5,8 @@
  * @package _lhpbp
  */
 
-namespace _lhpbp\Blocks;
-use _lhpbp\Component_Interface;
+namespace WpMunich\_lhpbp\Blocks;
+use WpMunich\_lhpbp\Component_Interface;
 use function add_action;
 use function register_block_type;
 use function wp_enqueue_script;

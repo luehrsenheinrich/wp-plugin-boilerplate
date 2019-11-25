@@ -5,7 +5,7 @@
  * @package _lhpbp
  */
 
-namespace _lhpbp;
+namespace WpMunich\_lhpbp;
 
 /**
  * Interface for a plugin component that exposes template tags.
