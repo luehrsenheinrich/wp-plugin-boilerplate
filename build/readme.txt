@@ -1,7 +1,7 @@
 === WP Plugin Boilerplate ===
 Contributors: wpmunich
 Tags: plugin,boilerplate
-Requires at least: 5.3
+Requires at least: 5.1
 Tested up to: 5.3
 Requires PHP: 7.2
 License: GPLv2

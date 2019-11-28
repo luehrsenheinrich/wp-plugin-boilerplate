@@ -5,7 +5,7 @@
  * @package _lhpbp
  */
 
-namespace _lhpbp;
+namespace WpMunich\_lhpbp;
 use InvalidArgumentException;
 use BadMethodCallException;
 use RuntimeException;
