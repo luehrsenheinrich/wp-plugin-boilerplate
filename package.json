@@ -12,7 +12,7 @@
   "testedWp": "5.2",
   "devDependencies": {
     "@babel/core": "^7.7.7",
-    "@lodder/grunt-postcss": "^2.0.0",
+    "@lodder/grunt-postcss": "^2.0.1",
     "@wordpress/babel-plugin-import-jsx-pragma": "^2.2.0",
     "@wordpress/babel-preset-default": "^4.8.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^2.1.0",
