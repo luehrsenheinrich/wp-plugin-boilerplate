@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "title": "_lhpbp",
   "name": "_lhpbp",
   "slug": "_lhpbp",
@@ -64,7 +64,7 @@
     "dev": "sh bin/setup-local-env.sh && grunt watch",
     "remove": "docker-compose down --volumes --remove-orphans",
     "release": "env-cmd release-it --ci && npm run release-git-draft",
-		"release-git-draft": "npx env-cmd release-it --no-increment --no-git --no-github.assets --no-github.draft --ci --no-hooks.after:bump",
+    "release-git-draft": "npx env-cmd release-it --no-increment --no-git --no-github.assets --no-github.draft --ci --no-hooks.after:bump",
     "rename": "node bin/rename-slug.js"
   },
   "browserslist": [
