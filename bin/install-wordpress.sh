@@ -24,7 +24,7 @@ done
 echo $(status_message "Connected to the localhost WordPress...")
 
 # Checking if WordPress is already installed
-if ! $(${WP_CLI} core is-installed); then
+if ! $(${WP_CLI} wp core is-installed); then
 
 	# Set the correct file permissions
 	docker-compose run --user=root --rm cli chown www-data -R /var/www/
@@ -33,19 +33,19 @@ if ! $(${WP_CLI} core is-installed); then
 
 	# Install WordPress
 	echo $(status_message "Installing WordPress...")
-	${WP_CLI} core install --url=localhost --title="WordPress Test" --admin_user=wordpress --admin_password=wordpress --admin_email=test@test.com
+	${WP_CLI} wp core install --url=localhost --title="WordPress Test" --admin_user=wordpress --admin_password=wordpress --admin_email=test@test.com
 
 	# Check for WordPress updates, just in case the WordPress image isn't up to date.
-	${WP_CLI} core update
+	${WP_CLI} wp core update
 
 	# Activate Plugin
-	${WP_CLI} plugin activate _lhpbp
+	${WP_CLI} wp plugin activate _lhpbp
 
 	# Import and activate needed plugins
-	${WP_CLI} plugin install gutenberg wordpress-importer query-monitor debug-bar --activate
+	${WP_CLI} wp plugin install gutenberg wordpress-importer query-monitor debug-bar --activate
 
 	# Activate debugging
-	${WP_CLI} config set WP_DEBUG true --raw
+	${WP_CLI} wp config set WP_DEBUG true --raw
 
 	docker-compose run --user=root wordpress chown www-data -R /var/www/
 
