@@ -2,7 +2,7 @@
   "github": {
     "release": true,
     "assets": "update/*.zip",
-		"draft": true,
+		"draft": true
   },
 	"npm": {
 		"publish": false
