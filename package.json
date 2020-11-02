@@ -22,7 +22,7 @@
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "babel-plugin-lodash": "^3.3.4",
-    "browserslist": "^4.14.5",
+    "browserslist": "^4.14.6",
     "classnames": "^2.2.6",
     "cssnano": "^4.1.10",
     "env-cmd": "^10.1.0",
