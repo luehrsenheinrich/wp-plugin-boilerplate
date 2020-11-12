@@ -46,6 +46,8 @@ if ! $(${WP_CLI} wp core is-installed); then
 
 	# Activate debugging
 	${WP_CLI} wp config set WP_DEBUG true --raw
+	${WP_CLI} wp config set WP_ENVIRONMENT_TYPE "development"
+	${WP_CLI} wp config set LH_CURRENTLY_EDITING "lhpbp"
 
 	docker-compose run --user=root wordpress chown www-data -R /var/www/
 

@@ -131,6 +131,7 @@ class Plugin {
 		$components = array(
 			new Blocks\Component(),
 			new i18n\Component(),
+			new ACF\Component(),
 		);
 
 		return $components;
