@@ -23,7 +23,7 @@ class Component implements Component_Interface {
 	 *
 	 * @var array
 	 */
-	protected $block_list = [];
+	protected $block_list = array();
 
 	/**
 	 * Constructor function to populate class vars.

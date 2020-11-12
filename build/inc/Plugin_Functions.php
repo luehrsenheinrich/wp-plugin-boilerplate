@@ -39,7 +39,7 @@ class Plugin_Functions {
 	 * @throws InvalidArgumentException Thrown if one of the $components does not implement
 	 *                                  Plugin_Component_Interface.
 	 */
-	public function __construct( array $components = [] ) {
+	public function __construct( array $components = array() ) {
 		// Set the template tags for the components.
 		foreach ( $components as $component ) {
 			// Bail if a templating component is invalid.
@@ -93,7 +93,7 @@ class Plugin_Functions {
 		$tags = $component->plugin_functions();
 		foreach ( $tags as $method_name => $callback ) {
 			if ( is_callable( $callback ) ) {
-				$callback = [ 'callback' => $callback ];
+				$callback = array( 'callback' => $callback );
 			}
 			if ( ! is_array( $callback ) || ! isset( $callback['callback'] ) ) {
 				throw new InvalidArgumentException(
