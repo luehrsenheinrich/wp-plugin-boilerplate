@@ -2,11 +2,11 @@
 /**
  * _Lhpbp\Blocks\Component class
  *
- * @package _lhpbp
+ * @package lhpbp
  */
 
-namespace WpMunich\_lhpbp\Blocks;
-use WpMunich\_lhpbp\Component_Interface;
+namespace WpMunich\lhpbp\Blocks;
+use WpMunich\lhpbp\Component_Interface;
 use function add_action;
 use function register_block_type;
 use function wp_enqueue_script;
@@ -62,7 +62,7 @@ class Component implements Component_Interface {
 	 */
 	public function register_scripts_styles() {
 		wp_register_script(
-			'_lhpbp-blocks-helper',
+			'lhpbp-blocks-helper',
 			_LHPBP_URL . 'js/blocks-helper.min.js',
 			array(),
 			'<%= pkg.version %>',
@@ -70,21 +70,21 @@ class Component implements Component_Interface {
 		);
 
 		wp_add_inline_script(
-			'_lhpbp-blocks-helper',
-			'window._lhpbp = {};',
+			'lhpbp-blocks-helper',
+			'window.lhpbp = {};',
 			'before'
 		);
 
 		wp_register_script(
-			'_lhpbp-blocks-editor',
+			'lhpbp-blocks-editor',
 			_LHPBP_URL . 'js/blocks.min.js',
-			array( '_lhpbp-blocks-helper', 'wp-block-library' ),
+			array( 'lhpbp-blocks-helper', 'wp-block-library' ),
 			'<%= pkg.version %>',
 			false
 		);
 
 		wp_register_script(
-			'_lhpbp-blocks-frontend',
+			'lhpbp-blocks-frontend',
 			_LHPBP_URL . 'js/blocks-frontend.min.js',
 			array( 'jquery' ),
 			'<%= pkg.version %>',
@@ -92,22 +92,22 @@ class Component implements Component_Interface {
 		);
 
 		wp_localize_script(
-			'_lhpbp-blocks-editor',
-			'_lhpbpPlugin',
+			'lhpbp-blocks-editor',
+			'lhpbpPlugin',
 			array(
 				'plugin_url' => _LHPBP_URL,
 			)
 		);
 
 		wp_register_style(
-			'_lhpbp-blocks-editor-style',
+			'lhpbp-blocks-editor-style',
 			_LHPBP_URL . 'css/blocks-editor.min.css',
 			array(),
 			'<%= pkg.version %>'
 		);
 
 		wp_register_style(
-			'_lhpbp-blocks-style',
+			'lhpbp-blocks-style',
 			_LHPBP_URL . 'css/blocks.min.css',
 			array(),
 			'<%= pkg.version %>'
@@ -120,7 +120,7 @@ class Component implements Component_Interface {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( '_lhpbp-blocks-frontend' );
+		wp_enqueue_script( 'lhpbp-blocks-frontend' );
 	}
 
 	/**
@@ -129,7 +129,7 @@ class Component implements Component_Interface {
 	 * @return void
 	 */
 	public function enqueue_footer_styles() {
-		wp_enqueue_style( '_lhpbp-blocks-style' );
+		wp_enqueue_style( 'lhpbp-blocks-style' );
 	}
 
 	/**
@@ -142,7 +142,7 @@ class Component implements Component_Interface {
 		$is_editor = ( ( $current_screen instanceof WP_Screen ) && $current_screen->is_block_editor() );
 
 		if ( $is_editor ) {
-			wp_enqueue_style( '_lhpbp-blocks-style' );
+			wp_enqueue_style( 'lhpbp-blocks-style' );
 		}
 	}
 	/**
@@ -156,8 +156,8 @@ class Component implements Component_Interface {
 
 		foreach ( $this->block_list as $block => $args ) {
 			$defaults = array(
-				'editor_script' => '_lhpbp-blocks-editor',
-				'editor_style'  => '_lhpbp-blocks-editor-style',
+				'editor_script' => 'lhpbp-blocks-editor',
+				'editor_style'  => 'lhpbp-blocks-editor-style',
 			);
 
 			$args = wp_parse_args( $args, $defaults );
@@ -174,7 +174,7 @@ class Component implements Component_Interface {
 	 */
 	public function register_i18n() {
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations( '_lhpbp-blocks-editor', '_lhpbp' );
+			wp_set_script_translations( 'lhpbp-blocks-editor', 'lhpbp' );
 		}
 	}
 }

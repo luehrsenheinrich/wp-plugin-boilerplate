@@ -1,11 +1,11 @@
 <?php
 /**
- * The `wp__lhpbp()` function.
+ * The `wp_lhpbp()` function.
  *
- * @package _lhpbp
+ * @package lhpbp
  */
 
-namespace WpMunich\_lhpbp;
+namespace WpMunich\lhpbp;
 
 /**
  * Provides access to all available functions of the plugin.
@@ -14,7 +14,7 @@ namespace WpMunich\_lhpbp;
  *
  * @return Plugin_Functions Plugin functions instance exposing plugin function methods.
  */
-function wp__lhpbp() {
+function wp_lhpbp() {
 	static $plugin = null;
 
 	if ( null === $plugin ) {
