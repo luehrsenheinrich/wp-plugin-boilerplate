@@ -2,10 +2,10 @@
 /**
  * _Lhpbp\Plugin class
  *
- * @package _lhpbp
+ * @package lhpbp
  */
 
-namespace WpMunich\_lhpbp;
+namespace WpMunich\lhpbp;
 use InvalidArgumentException;
 
 /**
@@ -19,7 +19,7 @@ class Plugin {
 	 *
 	 * @var array
 	 */
-	protected $components = [];
+	protected $components = array();
 
 	/**
 	 * The template tags instance, providing access to all available template tags.
@@ -39,7 +39,7 @@ class Plugin {
 	 *
 	 * @throws InvalidArgumentException Thrown if one of the $components does not implement Component_Interface.
 	 */
-	public function __construct( array $components = [] ) {
+	public function __construct( array $components = array() ) {
 		if ( empty( $components ) ) {
 			$components = $this->get_default_components();
 		}
@@ -51,7 +51,7 @@ class Plugin {
 				throw new InvalidArgumentException(
 					sprintf(
 						/* translators: 1: classname/type of the variable, 2: interface name */
-						__( 'The plugin component %1$s does not implement the %2$s interface.', '_lhpbp' ),
+						__( 'The plugin component %1$s does not implement the %2$s interface.', 'lhpbp' ),
 						gettype( $component ),
 						Component_Interface::class
 					)
@@ -87,9 +87,9 @@ class Plugin {
 	/**
 	 * Retrieves the template tags instance, the entry point exposing template tag methods.
 	 *
-	 * Calling `wp__lhpbp()` is a short-hand for calling this method on the main plugin instance. The instance then allows
+	 * Calling `wp_lhpbp()` is a short-hand for calling this method on the main plugin instance. The instance then allows
 	 * for actual template tag methods to be called. For example, if there is a template tag called `posted_on`, it can
-	 * be accessed via `wp__lhpbp()->posted_on()`.
+	 * be accessed via `wp_lhpbp()->posted_on()`.
 	 *
 	 * @return Plugin_Functions Template tags instance.
 	 */
@@ -112,7 +112,7 @@ class Plugin {
 			throw new InvalidArgumentException(
 				sprintf(
 					/* translators: %s: slug */
-					__( 'No plugin component with the slug %s exists.', '_lhpbp' ),
+					__( 'No plugin component with the slug %s exists.', 'lhpbp' ),
 					$slug
 				)
 			);

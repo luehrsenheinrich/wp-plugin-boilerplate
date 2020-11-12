@@ -2,10 +2,10 @@
 /**
  * _Lhpbp\Plugin_Functions class
  *
- * @package _lhpbp
+ * @package lhpbp
  */
 
-namespace WpMunich\_lhpbp;
+namespace WpMunich\lhpbp;
 use InvalidArgumentException;
 use BadMethodCallException;
 use RuntimeException;
@@ -15,8 +15,8 @@ use RuntimeException;
  *
  * This class provides access to all available plugin functions methods.
  *
- * Its instance can be accessed through `wp__lhpbp()`. For example, if there is a plugin function called `posted_on`, it can
- * be accessed via `wp__lhpbp()->posted_on()`.
+ * Its instance can be accessed through `wp_lhpbp()`. For example, if there is a plugin function called `posted_on`, it can
+ * be accessed via `wp_lhpbp()->posted_on()`.
  */
 class Plugin_Functions {
 	/**
@@ -39,7 +39,7 @@ class Plugin_Functions {
 	 * @throws InvalidArgumentException Thrown if one of the $components does not implement
 	 *                                  Plugin_Component_Interface.
 	 */
-	public function __construct( array $components = [] ) {
+	public function __construct( array $components = array() ) {
 		// Set the template tags for the components.
 		foreach ( $components as $component ) {
 			// Bail if a templating component is invalid.
@@ -47,7 +47,7 @@ class Plugin_Functions {
 				throw new InvalidArgumentException(
 					sprintf(
 						/* translators: 1: classname/type of the variable, 2: interface name */
-						__( 'The plugin functions component %1$s does not implement the %2$s interface.', '_lhpbp' ),
+						__( 'The plugin functions component %1$s does not implement the %2$s interface.', 'lhpbp' ),
 						gettype( $component ),
 						Plugin_Component_Interface::class
 					)
@@ -73,8 +73,8 @@ class Plugin_Functions {
 			throw new BadMethodCallException(
 				sprintf(
 					/* translators: %s: template tag name */
-					__( 'The plugin function %s does not exist.', '_lhpbp' ),
-					'wp__lhpbp()->' . $method . '()'
+					__( 'The plugin function %s does not exist.', 'lhpbp' ),
+					'wp_lhpbp()->' . $method . '()'
 				)
 			);
 		}
@@ -93,13 +93,13 @@ class Plugin_Functions {
 		$tags = $component->plugin_functions();
 		foreach ( $tags as $method_name => $callback ) {
 			if ( is_callable( $callback ) ) {
-				$callback = [ 'callback' => $callback ];
+				$callback = array( 'callback' => $callback );
 			}
 			if ( ! is_array( $callback ) || ! isset( $callback['callback'] ) ) {
 				throw new InvalidArgumentException(
 					sprintf(
 						/* translators: 1: template tag method name, 2: component class name */
-						__( 'The plugin function method %1$s registered by plugin component %2$s must either be a callable or an array.', '_lhpbp' ),
+						__( 'The plugin function method %1$s registered by plugin component %2$s must either be a callable or an array.', 'lhpbp' ),
 						$method_name,
 						get_class( $component )
 					)
@@ -109,7 +109,7 @@ class Plugin_Functions {
 				throw new RuntimeException(
 					sprintf(
 						/* translators: 1: template tag method name, 2: component class name */
-						__( 'The plugin function method %1$s registered by plugin component %2$s conflicts with an already registered plugin function of the same name.', '_lhpbp' ),
+						__( 'The plugin function method %1$s registered by plugin component %2$s conflicts with an already registered plugin function of the same name.', 'lhpbp' ),
 						$method_name,
 						get_class( $component )
 					)

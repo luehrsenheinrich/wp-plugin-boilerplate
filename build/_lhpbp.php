@@ -2,7 +2,7 @@
 /**
  * The main file of the <%= pkg.title %> plugin
  *
- * @package _lhpbp
+ * @package lhpbp
  * @version <%= pkg.version %>
  *
  * Plugin Name: <%= pkg.title %>
@@ -11,7 +11,7 @@
  * Author: <%= pkg.author %>
  * Author URI: <%= pkg.authorUrl %>
  * Version: <%= pkg.version %>
- * Text Domain: _lhpbp
+ * Text Domain: lhpbp
  */
 
 // If this file is called directly, abort.
@@ -38,8 +38,8 @@ if ( ! defined( '_LHPBP_PATH' ) ) {
 // Load the autoloader.
 require _LHPBP_PATH . 'vendor/autoload.php';
 
-// Load the `wp__lhpbp()` entry point function.
+// Load the `wp_lhpbp()` entry point function.
 require _LHPBP_PATH . 'inc/functions.php';
 
 // Initialize the plugin.
-call_user_func( 'WpMunich\_lhpbp\wp__lhpbp' );
+call_user_func( 'WpMunich\lhpbp\wp_lhpbp' );

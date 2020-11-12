@@ -40,7 +40,7 @@ class BlockEdit extends Component {
 					onChange={ ( value ) => setAttributes( { content: value } ) }
 					withoutInteractiveFormatting
 					className={ classnames(
-						'wp-block-_lhpbp-hello__content', {
+						'wp-block-lhpbp-hello__content', {
 							'has-four-swords': indexOf( content, 'Kenobi' ) > -1,
 						}
 					) }
