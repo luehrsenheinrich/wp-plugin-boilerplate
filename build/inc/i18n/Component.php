@@ -2,11 +2,11 @@
 /**
  * _Lhpbp\i18n\Component class
  *
- * @package _lhpbp
+ * @package lhpbp
  */
 
-namespace WpMunich\_lhpbp\i18n;
-use WpMunich\_lhpbp\Component_Interface;
+namespace WpMunich\lhpbp\i18n;
+use WpMunich\lhpbp\Component_Interface;
 use function add_action;
 use function load_plugin_textdomain;
 
@@ -36,7 +36,7 @@ class Component implements Component_Interface {
 	 */
 	public function load_plugin_textdomain() {
 		load_plugin_textdomain(
-			'_lhpbp',
+			'lhpbp',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

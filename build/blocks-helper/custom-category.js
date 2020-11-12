@@ -13,11 +13,11 @@ import icons from './icons';
  */
 
 setCategories( [
-	// Add a _lhpbp block category
+	// Add a lhpbp block category
 	{
 		slug: 'jslhpbp',
 		title: 'jslhpbp',
-		icon: icons._lhpbp,
+		icon: icons.lhpbp,
 	},
 	...getCategories().filter( ( { slug } ) => slug !== 'jslhpbp' ),
 ] );

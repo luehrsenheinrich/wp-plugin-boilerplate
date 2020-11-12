@@ -16,7 +16,7 @@ export default ( { attributes, className } ) => {
 		content,
 	} = attributes;
 
-	const contentClasses = classnames( 'wp-block-_lhpbp-hello__content', {
+	const contentClasses = classnames( 'wp-block-lhpbp-hello__content', {
 		'has-four-swords': indexOf( content, 'Kenobi' ) > -1,
 	} );
 

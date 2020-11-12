@@ -39,7 +39,7 @@ if ! $(${WP_CLI} wp core is-installed); then
 	${WP_CLI} wp core update
 
 	# Activate Plugin
-	${WP_CLI} wp plugin activate _lhpbp
+	${WP_CLI} wp plugin activate lhpbp
 
 	# Import and activate needed plugins
 	${WP_CLI} wp plugin install gutenberg wordpress-importer query-monitor debug-bar --activate
