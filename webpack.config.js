@@ -6,14 +6,9 @@ const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extract
 module.exports = {
 	entry: {
 		'js/script.min': path.resolve(__dirname, './build/js/script.js'),
-		'js/blocks.min': path.resolve(__dirname, './build/blocks/blocks.js'),
-		'js/blocks-editor.min': path.resolve(
+		'blocks/block-helper.min': path.resolve(
 			__dirname,
-			'./build/blocks/blocks-frontend.js'
-		),
-		'js/blocks-helper.min': path.resolve(
-			__dirname,
-			'./build/blocks-helper/blocks-helper.js'
+			'./build/blocks/block-helper.js'
 		),
 	},
 	mode: 'none',
