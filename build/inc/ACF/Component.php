@@ -46,7 +46,7 @@ class Component implements Component_Interface {
 	 * @return string       Save path.
 	 */
 	public function acf_json_save_point( $path ) {
-		$path = LHPLUGIN_PATH . 'acf-json';
+		$path = _LHPBP_PATH . 'acf-json';
 		return $path;
 	}
 
@@ -58,7 +58,7 @@ class Component implements Component_Interface {
 	 * @return array        An array of paths.
 	 */
 	public function acf_json_load_point( $paths ) {
-		$paths[] = LHPLUGIN_PATH . 'acf-json';
+		$paths[] = _LHPBP_PATH . 'acf-json';
 
 		return $paths;
 	}
