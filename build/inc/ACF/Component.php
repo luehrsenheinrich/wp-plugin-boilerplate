@@ -46,7 +46,7 @@ class Component implements Component_Interface {
 	 * @return string       Save path.
 	 */
 	public function acf_json_save_point( $path ) {
-		$path = LHTHEME_PATH . 'acf-json';
+		$path = LHPLUGIN_PATH . 'acf-json';
 		return $path;
 	}
 
@@ -82,9 +82,9 @@ class Component implements Component_Interface {
 
 		$option_page = acf_add_options_page(
 			array(
-				'page_title' => __( 'Theme General Settings', 'lhpbp' ),
-				'menu_title' => __( 'Theme Settings', 'lhpbp' ),
-				'menu_slug'  => 'theme-general-settings',
+				'page_title' => __( 'Plugin Settings', 'lhpbp' ),
+				'menu_title' => __( 'Plugin Settings', 'lhpbp' ),
+				'menu_slug'  => 'lhpbp-plugin-general-settings',
 				'capability' => 'edit_posts',
 				'redirect'   => false,
 			)
