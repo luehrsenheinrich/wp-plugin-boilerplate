@@ -15,7 +15,7 @@ const postCssPresetEnvOptions = {
 
 module.exports = function (grunt) {
 	// measures the time each task takes
-	// require( 'time-grunt' )( grunt );
+	require('time-grunt')(grunt);
 
 	// Get the needed modules just in time
 	require('jit-grunt')(grunt, {
@@ -94,7 +94,7 @@ module.exports = function (grunt) {
 
 		// // ESLINT - Make sure our JS follows coding standards
 		eslint: {
-			target: ['build/js/**/*.js'],
+			target: ['build/**/*.js', '!build/vendor/**/*.js'],
 		},
 
 		// COPY FILES - Copy needed files from build to trunk
@@ -198,12 +198,12 @@ module.exports = function (grunt) {
 			},
 			php: {
 				files: ['build/**/*.php'], // which files to watch
-				tasks: ['dev_deploy'],
+				tasks: ['newer_handle_static'],
 				options: {},
 			},
 			static: {
 				files: ['build/**/*.html', 'build/**/*.txt'], // Watch all files
-				tasks: ['dev_deploy'],
+				tasks: ['newer_handle_static'],
 				options: {},
 			},
 			livereload: {
@@ -220,19 +220,25 @@ module.exports = function (grunt) {
 		'postcss:default',
 		'postcss:minify',
 	]);
+
 	grunt.registerTask('handle_css', [
 		'clean:dist_css',
 		'postcss:default',
 		'postcss:minify',
 	]);
 
-	grunt.registerTask('newer_handle_js', ['webpack']);
 	grunt.registerTask('handle_js', ['webpack']);
+
+	grunt.registerTask('newer_handle_static', [
+		'newer:copy:build',
+		'newer:copy:build_css',
+		'newer:copy:build_stream',
+	]);
 
 	// // Deployment strategies
 	grunt.registerTask('dev_deploy', [
 		'newer_handle_css',
-		'newer_handle_js',
+		'handle_js',
 		'newer:copy:build',
 		'newer:copy:build_css',
 		'newer:copy:build_stream',
