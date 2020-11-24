@@ -79,7 +79,7 @@ module.exports = function (grunt) {
 
 		// LINT CSS - Lint the css we wrote
 		stylelint: {
-			all: ['build/**/*.css', '!build/puc/**/*.css'],
+			all: ['build/**/*.css', '!build/vendor/**/*.css'],
 		},
 
 		// PROCESS JS - Use webpack to process the needed js files
