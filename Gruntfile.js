@@ -189,28 +189,22 @@ module.exports = function (grunt) {
 					'!build/**/*.bundle.js',
 				],
 				tasks: ['handle_js'],
-				options: {},
+				options: { livereload: true },
 			},
 			css: {
 				files: ['build/**/*.css'], // which files to watch
 				tasks: ['newer_handle_css'],
-				options: {},
+				options: { livereload: true },
 			},
 			php: {
 				files: ['build/**/*.php'], // which files to watch
 				tasks: ['newer_handle_static'],
-				options: {},
+				options: { livereload: true },
 			},
 			static: {
 				files: ['build/**/*.html', 'build/**/*.txt'], // Watch all files
 				tasks: ['newer_handle_static'],
-				options: {},
-			},
-			livereload: {
-				// Here we watch the files the sass task will compile to
-				// These files are sent to the live reload server after less compiles to them
 				options: { livereload: true },
-				files: ['trunk/**/*'],
 			},
 		},
 	});
@@ -235,26 +229,29 @@ module.exports = function (grunt) {
 		'newer:copy:build_stream',
 	]);
 
-	// // Deployment strategies
-	grunt.registerTask('dev_deploy', [
-		'newer_handle_css',
-		'handle_js',
-		'newer:copy:build',
-		'newer:copy:build_css',
-		'newer:copy:build_stream',
-	]);
-	grunt.registerTask('deploy', [
-		'clean:trunk',
-		'handle_css',
-		'handle_js',
+	grunt.registerTask('handle_static', [
 		'copy:build',
 		'copy:build_css',
 		'copy:build_stream',
 	]);
 
-	// // Linting
+	// Deployment strategies
+	grunt.registerTask('dev_deploy', [
+		'newer_handle_css',
+		'handle_js',
+		'newer_handle_static',
+	]);
+
+	grunt.registerTask('deploy', [
+		'clean:trunk',
+		'handle_css',
+		'handle_js',
+		'handle_static',
+	]);
+
+	// Linting
 	grunt.registerTask('lint', ['shell:lintPHP', 'eslint', 'stylelint']);
 
-	// // Releasing
+	// Releasing
 	grunt.registerTask('release', ['lint', 'deploy', 'compress']);
 };
