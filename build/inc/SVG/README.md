@@ -19,14 +19,27 @@ The `get_svg()` function returns the SVG DOM for the file in the given path.
   - `(array) $attributes` - An array of HTML attributes applied to the returned SVG tag. Valid array keys are 'class', 'id', 'width', 'height', 'fill'.
   - `(string) $return_type` - The desired return type for the SVG DOM. Valid inputs are 'tag' and 'base64'. Defaults to 'tag'.
 
+#### Returns
+`(string)` The svg HTML dom in the type defined in `return_type`.
+
 ### get_admin_menu_icon( (string) $path )
 A wrapper for the `get_svg()` function that provides the fitting arguments to use
 SVGs in admin menu items.
 
 * `(string) $path` - The given path relative to the current theme or plugin.
 
-## Example
+#### Returns
+`(string)` The base64 encoded svg HTML dom.
 
+## Example
+### Base SVG
+```
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 355.55 425.2">
+  <path d="M355.55 0h-64.07L115.36 425.2h64.07zM240.19 0h-64.07L0 425.2h64.07z"/>
+</svg>
+```
+
+### Code
 ```
 $arguments = array(
 	'attributes' => array(
