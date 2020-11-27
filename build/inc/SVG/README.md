@@ -14,6 +14,7 @@ and then in the plugin folder.
 ### get_svg( (sting) $path, (array) $arguments )
 The `get_svg()` function returns the SVG DOM for the file in the given path.
 
+### Arguments
 * `(string) $path` - The given path relative to the current theme or plugin.
 * `(array) $arguments` - An array of arguments to modify the behavior of the function.
   - `(array) $attributes` - An array of HTML attributes applied to the returned SVG tag. Valid array keys are 'class', 'id', 'width', 'height', 'fill'.
@@ -26,6 +27,7 @@ The `get_svg()` function returns the SVG DOM for the file in the given path.
 A wrapper for the `get_svg()` function that provides the fitting arguments to use
 SVGs in admin menu items.
 
+### Arguments
 * `(string) $path` - The given path relative to the current theme or plugin.
 
 #### Returns
