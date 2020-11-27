@@ -22,7 +22,7 @@ class Plugin {
 	protected $components = array();
 
 	/**
-	 * The template tags instance, providing access to all available template tags.
+	 * The template tags instance, providing access to all available plugin functions.
 	 *
 	 * @var Plugin_Functions
 	 */
@@ -64,7 +64,7 @@ class Plugin {
 			array_filter(
 				$this->components,
 				function( Component_Interface $component ) {
-					return $component instanceof Plugin_Component_Interface;
+					return $component instanceof Plugin_Function_Interface;
 				}
 			)
 		);
@@ -132,6 +132,7 @@ class Plugin {
 			new Blocks\Component(),
 			new i18n\Component(),
 			new ACF\Component(),
+			new SVG\Component(),
 		);
 
 		return $components;

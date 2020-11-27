@@ -41,5 +41,9 @@ require _LHPBP_PATH . 'vendor/autoload.php';
 // Load the `wp_lhpbp()` entry point function.
 require _LHPBP_PATH . 'inc/functions.php';
 
+if ( wp_get_environment_type() === 'development' ) {
+	require _LHPBP_PATH . 'inc/test.php';
+}
+
 // Initialize the plugin.
 call_user_func( 'WpMunich\lhpbp\wp_lhpbp' );

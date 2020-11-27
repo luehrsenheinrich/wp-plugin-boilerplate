@@ -34,22 +34,22 @@ class Plugin_Functions {
 	 * Sets the plugin components.
 	 *
 	 * @param array $components Optional. List of plugin function components. Each of these must implement the
-	 *                          Plugin_Component_Interface interface.
+	 *                          Plugin_Function_Interface interface.
 	 *
 	 * @throws InvalidArgumentException Thrown if one of the $components does not implement
-	 *                                  Plugin_Component_Interface.
+	 *                                  Plugin_Function_Interface.
 	 */
 	public function __construct( array $components = array() ) {
 		// Set the template tags for the components.
 		foreach ( $components as $component ) {
 			// Bail if a templating component is invalid.
-			if ( ! $component instanceof Plugin_Component_Interface ) {
+			if ( ! $component instanceof Plugin_Function_Interface ) {
 				throw new InvalidArgumentException(
 					sprintf(
 						/* translators: 1: classname/type of the variable, 2: interface name */
 						__( 'The plugin functions component %1$s does not implement the %2$s interface.', 'lhpbp' ),
 						gettype( $component ),
-						Plugin_Component_Interface::class
+						Plugin_Function_Interface::class
 					)
 				);
 			}
@@ -84,12 +84,12 @@ class Plugin_Functions {
 	/**
 	 * Sets template tags for a given plugin templating component.
 	 *
-	 * @param Plugin_Component_Interface $component plugin templating component.
+	 * @param Plugin_Function_Interface $component plugin templating component.
 	 *
 	 * @throws InvalidArgumentException Thrown when one of the template tags is invalid.
 	 * @throws RuntimeException         Thrown when one of the template tags conflicts with an existing one.
 	 */
-	protected function set_plugin_functions( Plugin_Component_Interface $component ) {
+	protected function set_plugin_functions( Plugin_Function_Interface $component ) {
 		$tags = $component->plugin_functions();
 		foreach ( $tags as $method_name => $callback ) {
 			if ( is_callable( $callback ) ) {
