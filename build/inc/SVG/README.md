@@ -12,7 +12,7 @@ and then in the plugin folder.
 ## Functions
 
 ### get_svg( (sting) $path, (array) $arguments )
-The `get_svg` returns the SVG DOM for the file in the given path.
+The `get_svg()` function returns the SVG DOM for the file in the given path.
 
 * `(string) $path` - The given path relative to the current theme or plugin.
 * `(array) $arguments` - An array of arguments to modify the behavior of the function.
@@ -20,7 +20,27 @@ The `get_svg` returns the SVG DOM for the file in the given path.
   - `(string) $return_type` - The desired return type for the SVG DOM. Valid inputs are 'tag' and 'base64'. Defaults to 'tag'.
 
 ### get_admin_menu_icon( (string) $path )
-A wrapper for the `get_svg` function that provides the fitting arguments to use
+A wrapper for the `get_svg()` function that provides the fitting arguments to use
 SVGs in admin menu items.
 
 * `(string) $path` - The given path relative to the current theme or plugin.
+
+## Example
+
+```
+$arguments = array(
+	'attributes' => array(
+		'fill'  => '#26b8ff',
+		'class' => 'slashes-svg',
+		'id'    => 'slashes',
+	),
+);
+
+return wp_lhpbp()->get_svg( 'img/icons/slashes.svg', $arguments );
+```
+### Returns
+```
+<svg xmlns="http://www.w3.org/2000/svg" class="slashes-svg" fill="#26b8ff" id="slashes" viewBox="0 0 355.55 425.2">
+  <path d="M355.55 0h-64.07L115.36 425.2h64.07zM240.19 0h-64.07L0 425.2h64.07z"></path>
+</svg>
+```
