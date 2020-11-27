@@ -20,7 +20,7 @@
     "@wordpress/eslint-plugin": "^7.3.0",
     "@wordpress/prettier-config": "^0.4.0",
     "autoprefixer": "^9.8.6",
-    "babel-loader": "^8.2.1",
+    "babel-loader": "^8.2.2",
     "babel-plugin-lodash": "^3.3.4",
     "browserslist": "^4.14.7",
     "classnames": "^2.2.6",
