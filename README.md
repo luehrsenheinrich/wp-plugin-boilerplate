@@ -1,7 +1,5 @@
 # Luehrsen // Heinrich Plugin Boilerplate for WordPress
 
-[![Build Status](https://travis-ci.com/luehrsenheinrich/wp-plugin-boilerplate.svg?branch=master)](https://travis-ci.com/luehrsenheinrich/wp-plugin-boilerplate)
-
 There are probably more plugin boilerplates than actual plugins available for
 bootstrapping your work on an amazing WordPress plugin. And that is very much
 okay, because every developer, every agency has their own little flavors in how
@@ -30,28 +28,26 @@ We will also assume, that you have already configured your GitHub repository to
 your liking, downloaded the source of the boilerplate and uploaded it to your
 new repository. So let's get started:
 
-### Plugin Slug & Names
+### Theme Slug & Names
 
-- [ ] Rename the `build/lhpbp.php` file
 - [ ] Search & Replace (case sensitive) `lhpbp` with your new WordPress plugin slug
-- [ ] Search & Replace (case sensitive) `jslhpbp` with your new WordPress plugin slug in camelcase
 - [ ] Search & Replace (case sensitive) `_LHPBP` with your new WordPress plugin slug in uppercase
-- [ ] Check success in `package.json`, `docker-compose.json` & `bin/install-wordpress.sh`
+- [ ] Check success in `package.json`
+- [ ] Adjust `name` in `package.json`
 
-### Running the environment
+### Running the enviroment
 
-- [ ] Type `npm run setup` into the terminal to spin up the docker enviroment
-- [ ] Open `http://localhost/wp-admin` and log in with `wordpress:wordpress`
-- [ ] Make sure the plugin unit demo content is installed and the plugin is active
+- [ ] Type `npm start` into the terminal to spin up the docker enviroment
+- [ ] Open `http://localhost/wp-admin` and log in with `admin:password`
 
 ### Test Release
 
-- [ ] Save the `.env.sample` as `.env` and add your GitHub token
-- [ ] Add a 0.0.2 release by running `npm run release` in your terminal
+- [ ] Create a patch release with the github action
 - [ ] Check if the release has been created and uploaded in the GitHub release section
 
 ### Finishing touches
 
 - [ ] Edit the `plugin-README.md` with the appropriate text about your plugin
-- [ ] Remove the `README.md` and rename `plugin-README.md` to be the new `README.md`
-- [ ] 🎉 Celebrate!
+- [ ] Delete (or rename) the `README.md` (this file)
+- [ ] Rename the `plugin-README.md` to `README.md`
+- [ ] 🎉  Celebrate!

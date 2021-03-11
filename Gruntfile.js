@@ -1,7 +1,7 @@
 const webpackConfig = require('./webpack.config');
 
 const postCssPresetEnvOptions = {
-	stage: 3,
+	stage: 4,
 	features: {
 		'custom-media-queries': {
 			preserve: false,

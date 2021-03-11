@@ -2,18 +2,17 @@ const path = require('path');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
+const glob = require('glob');
 
 module.exports = {
-	entry: {
-		'js/script.min': path.resolve(__dirname, './build/js/script.js'),
-		'blocks/block-helper.min': path.resolve(
-			__dirname,
-			'./build/blocks/block-helper.js'
-		),
-	},
+	entry: glob.sync('./build/js/*.js').reduce(function (obj, el) {
+		obj[path.parse(el).name + '.min'] = el;
+		obj[path.parse(el).name + '.bundle'] = el;
+		return obj;
+	}, {}),
 	mode: 'none',
 	output: {
-		path: path.resolve(__dirname, './trunk'),
+		path: path.resolve(__dirname, './trunk/js'),
 		filename: '[name].js',
 	},
 	plugins: [
