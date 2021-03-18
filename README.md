@@ -1,5 +1,7 @@
 # Luehrsen // Heinrich Plugin Boilerplate for WordPress
 
+[![🏗 Build & Deploy](../../actions/workflows/main.yml/badge.svg)](../../actions/workflows/main.yml)
+
 There are probably more plugin boilerplates than actual plugins available for
 bootstrapping your work on an amazing WordPress plugin. And that is very much
 okay, because every developer, every agency has their own little flavors in how
