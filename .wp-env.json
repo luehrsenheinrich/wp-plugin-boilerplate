@@ -1,11 +1,9 @@
 {
 	"plugins": [
-		"./trunk"
-	],
-	"plugins": [
 		"https://downloads.wordpress.org/plugin/wordpress-importer.zip",
 		"https://downloads.wordpress.org/plugin/query-monitor.zip",
-		"https://downloads.wordpress.org/plugin/debug-bar.zip"
+		"https://downloads.wordpress.org/plugin/debug-bar.zip",
+		"./trunk"
 	],
 	"env": {
 		"development": {
