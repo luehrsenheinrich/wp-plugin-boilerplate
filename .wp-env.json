@@ -5,6 +5,9 @@
 		"https://downloads.wordpress.org/plugin/debug-bar.zip",
 		"./trunk"
 	],
+	"mappings": {
+		"php.ini": "./php.ini"
+	},
 	"env": {
 		"development": {
 			"port": 80,
