@@ -137,6 +137,12 @@ module.exports = function (grunt) {
 				dest: 'trunk/',
 				filter: 'isFile',
 			},
+			update_acf_json: {
+				expand: true,
+				cwd: 'trunk',
+				src: ['acf-json/*.json'],
+				dest: 'build/',
+			},
 		},
 
 		// CLEAN FOLDERS - Before we compile freshly, we want to delete old folder contents
@@ -160,6 +166,12 @@ module.exports = function (grunt) {
 				cwd: '<%= pkg.slug %>/',
 				src: ['**/*'],
 			},
+			acf: {
+				expand: true,
+				force: true,
+				cwd: 'build/acf-json',
+				src: ['*.json'],
+			},
 		},
 
 		// COMPRESS - Create a zip file from a new trunk
@@ -181,9 +193,6 @@ module.exports = function (grunt) {
 
 		// WATCHER - Watch for changes in files and process those when a change is detected
 		watch: {
-			options: {
-				event: ['changed', 'added', 'deleted'],
-			},
 			js: {
 				files: [
 					'build/**/*.js',
@@ -208,6 +217,10 @@ module.exports = function (grunt) {
 				files: ['build/**/*.html', 'build/**/*.txt'], // Watch all files
 				tasks: ['newer_handle_static'],
 				options: { livereload: true },
+			},
+			acf: {
+				files: ['trunk/acf-json/**'],
+				tasks: ['clean:acf', 'copy:update_acf_json'],
 			},
 		},
 	});
