@@ -89,11 +89,7 @@ module.exports = function (grunt) {
 		// // SHELL - Run needed shell commands
 		shell: {
 			lintPHP: 'composer run lint',
-		},
-
-		// // ESLINT - Make sure our JS follows coding standards
-		eslint: {
-			target: ['build/**/*.js', '!build/vendor/**/*.js'],
+			lintJS: 'npx eslint ./build'
 		},
 
 		// COPY FILES - Copy needed files from build to trunk
@@ -265,7 +261,7 @@ module.exports = function (grunt) {
 	]);
 
 	// Linting
-	grunt.registerTask('lint', ['shell:lintPHP', 'eslint', 'stylelint']);
+	grunt.registerTask('lint', ['shell:lintPHP', 'shell:lintJS', 'stylelint']);
 
 	// Releasing
 	grunt.registerTask('release', ['lint', 'deploy', 'compress']);
