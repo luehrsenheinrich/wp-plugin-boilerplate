@@ -10,6 +10,7 @@ use WpMunich\lhpbp\Component_Interface;
 use function add_action;
 use function wp_get_environment_type;
 use function acf_add_options_page;
+use function WpMunich\lhpbp\wp_lhpbp;
 
 /**
  * A class to handle acf related logic..
@@ -85,6 +86,7 @@ class Component implements Component_Interface {
 				'page_title' => __( 'Plugin Settings', 'lhpbp' ),
 				'menu_title' => __( 'Plugin Settings', 'lhpbp' ),
 				'menu_slug'  => 'lhpbp-plugin-general-settings',
+				'icon_url'   => wp_lhpbp()->get_admin_menu_icon( 'img/icons/slashes.svg' ),
 				'capability' => 'edit_posts',
 				'redirect'   => false,
 			)
