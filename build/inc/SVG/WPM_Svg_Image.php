@@ -35,6 +35,13 @@ class WPM_Svg_Image {
 	 * @var array
 	 */
 	private $attributes = array();
+	
+	/**
+	 * An array of allowed svg attributes.
+	 *
+	 * @var array
+	 */
+	private $allowed_attributes = array( 'class', 'id', 'width', 'height', 'fill' );
 
 	/**
 	 * The return type for the render function.
@@ -133,8 +140,7 @@ class WPM_Svg_Image {
 	 * @return array             A parsed array of HTML attributes.
 	 */
 	private function parse_attributes( $attributes ) {
-		$allowed_attributes = array( 'class', 'id', 'width', 'height', 'fill' );
-
+		$allowed_attributes = apply_filters( 'wpm_svg_allowed_attributes', $this->allowed_attributes );
 		$parsed_attributes = array();
 		foreach ( $attributes as $key => $value ) {
 			if ( in_array( $key, $allowed_attributes, true ) ) {
