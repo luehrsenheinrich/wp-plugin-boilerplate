@@ -31,7 +31,6 @@
     "grunt-webpack": "^4.0.3",
     "jit-grunt": "^0.10.0",
     "normalize.css": "^8.0.1",
-    "npm": "^8.1.0",
     "postcss": "^8.3.9",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",
