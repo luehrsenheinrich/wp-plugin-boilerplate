@@ -46,7 +46,7 @@
     "start": "wp-env start",
     "stop": "wp-env stop",
     "clean": "wp-env clean all",
-    "release": "grunt release"
+    "release": "eslint ./build && composer run lint && grunt release"
   },
   "browserslist": [
     "extends @wordpress/browserslist-config"

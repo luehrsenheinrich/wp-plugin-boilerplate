@@ -260,9 +260,6 @@ module.exports = function (grunt) {
 		'handle_static',
 	]);
 
-	// Linting
-	grunt.registerTask('lint', ['shell:lintPHP', 'shell:lintJS', 'stylelint']);
-
 	// Releasing
-	grunt.registerTask('release', ['lint', 'deploy', 'compress']);
+	grunt.registerTask('release', ['deploy', 'compress']);
 };
