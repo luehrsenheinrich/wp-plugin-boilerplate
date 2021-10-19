@@ -89,7 +89,7 @@ module.exports = function (grunt) {
 		// // SHELL - Run needed shell commands
 		shell: {
 			lintPHP: 'composer run lint',
-			lintJS: 'npx eslint ./build'
+			lintJS: 'eslint ./build'
 		},
 
 		// COPY FILES - Copy needed files from build to trunk
