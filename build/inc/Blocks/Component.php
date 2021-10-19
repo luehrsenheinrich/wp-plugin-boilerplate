@@ -31,7 +31,6 @@ class Component implements Component_Interface {
 			add_action( 'acf/init', array( $this, 'register_acf_block_types' ) );
 		}
 		add_filter( 'block_categories', array( $this, 'add_block_categories' ), 10, 2 );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 	}
 
 	/**
@@ -74,15 +73,5 @@ class Component implements Component_Interface {
 				),
 			)
 		);
-	}
-
-	/**
-	 * Enqueue block editor assets.
-	 *
-	 * @return void
-	 */
-	public function enqueue_block_editor_assets() {
-		$script_asset = include( _LHPBP_PATH . 'blocks/block-helper.min.asset.php' ); // phpcs:ignore
-		wp_enqueue_script( 'lhpbp-block-helper', _LHPBP_PATH . 'blocks/block-helper.min.js', array_merge( $script_asset['dependencies'], array() ), _LHPBP_VERSION, true );
 	}
 }
