@@ -35,7 +35,7 @@ class WPM_Svg_Image {
 	 * @var array
 	 */
 	private $attributes = array();
-	
+
 	/**
 	 * An array of allowed svg attributes.
 	 *
@@ -141,7 +141,7 @@ class WPM_Svg_Image {
 	 */
 	private function parse_attributes( $attributes ) {
 		$allowed_attributes = apply_filters( 'wpm_svg_allowed_attributes', $this->allowed_attributes );
-		$parsed_attributes = array();
+		$parsed_attributes  = array();
 		foreach ( $attributes as $key => $value ) {
 			if ( in_array( $key, $allowed_attributes, true ) ) {
 				$parsed_attributes[ $key ] = esc_attr( $value );
