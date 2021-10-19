@@ -1,5 +1,5 @@
 {
-  "extends": "@wordpress/stylelint-config",
+  "extends": "stylelint-config-wordpress",
   "rules": {
     "no-descending-specificity": null,
     "selector-class-pattern": null,

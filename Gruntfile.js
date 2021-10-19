@@ -35,6 +35,7 @@ module.exports = function (grunt) {
 					map: false,
 					processors: [
 						require('postcss-import')(),
+						require('postcss-normalize')(),
 						require('postcss-preset-env')(postCssPresetEnvOptions),
 					],
 				},
@@ -89,7 +90,11 @@ module.exports = function (grunt) {
 		// // SHELL - Run needed shell commands
 		shell: {
 			lintPHP: 'composer run lint',
-			lintJS: 'eslint ./build'
+		},
+
+		// // ESLINT - Make sure our JS follows coding standards
+		eslint: {
+			target: ['build/**/*.js', '!build/vendor/**/*.js'],
 		},
 
 		// COPY FILES - Copy needed files from build to trunk
@@ -260,6 +265,9 @@ module.exports = function (grunt) {
 		'handle_static',
 	]);
 
+	// Linting
+	grunt.registerTask('lint', ['shell:lintPHP', 'eslint', 'stylelint']);
+
 	// Releasing
-	grunt.registerTask('release', ['deploy', 'compress']);
+	grunt.registerTask('release', ['lint', 'deploy', 'compress']);
 };

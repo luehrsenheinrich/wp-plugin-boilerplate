@@ -33,9 +33,9 @@ jobs:
           git config user.name $GITHUB_ACTOR
           git config user.email gh-actions-${GITHUB_ACTOR}@github.com
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: lts/*
+          node-version: 12
 
       - name: ⚙️ Setup PHP with tools
         uses: shivammathur/setup-php@v2
@@ -73,7 +73,7 @@ jobs:
         run: composer install --prefer-dist
 
       - name: ⚙️ Install Node Packages
-        run: npm ci
+        run: npm install
 
       - name: ✍️ Create Changelog
         shell: bash
@@ -93,7 +93,7 @@ jobs:
         run: echo "::set-output name=version::$(npm version ${{ github.event.inputs.version }} -m 'Tagging %s' -f)"
 
       - name: 🏗 Build Release
-        run: npm run release
+        run: npx grunt release
 
       - name: Push the version to git
         run: |

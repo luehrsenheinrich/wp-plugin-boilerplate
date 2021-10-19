@@ -7,9 +7,9 @@ name: 🏗  Build & Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,9 +25,9 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: lts/*
+          node-version: 12
 
       - name: ⚙️ Setup PHP with tools
         uses: shivammathur/setup-php@v2
@@ -61,10 +61,10 @@ jobs:
         run: composer install --prefer-dist
 
       - name: ⚙️ Install Node Packages
-        run: npm ci
+        run: npm install
 
       - name: 🏗 Build Release
-        run: npm run release
+        run: npx grunt release
 
 #      - name: 🚢 Deploy to Devserv
 #        if: ${{ github.event_name == 'push' && success() }}

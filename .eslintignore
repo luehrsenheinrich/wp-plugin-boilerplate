@@ -1,3 +1,2 @@
 **/*.min.js
 **/*.bundle.js
-node_modules/*
