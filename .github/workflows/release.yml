@@ -93,7 +93,7 @@ jobs:
         run: echo "::set-output name=version::$(npm version ${{ github.event.inputs.version }} -m 'Tagging %s' -f)"
 
       - name: 🏗 Build Release
-        run: npx grunt release
+        run: npm run release
 
       - name: Push the version to git
         run: |

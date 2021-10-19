@@ -64,7 +64,7 @@ jobs:
         run: npm ci
 
       - name: 🏗 Build Release
-        run: npx grunt release
+        run: npm run release
 
 #      - name: 🚢 Deploy to Devserv
 #        if: ${{ github.event_name == 'push' && success() }}
