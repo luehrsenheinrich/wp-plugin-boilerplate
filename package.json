@@ -42,7 +42,7 @@
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",
     "prettier": "2.4.1",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14.3.0",
     "stylelint-config-wordpress": "^17.0.0",
     "terser-webpack-plugin": "^5.2.4",
     "time-grunt": "^2.0.0",
