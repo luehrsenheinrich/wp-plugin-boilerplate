@@ -37,7 +37,7 @@
     "grunt-stylelint": "^0.16.0",
     "grunt-webpack": "^4.0.3",
     "jit-grunt": "^0.10.0",
-    "postcss": "^8.3.9",
+    "postcss": "^8.4.8",
     "postcss-base64": "^0.7.1",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",
